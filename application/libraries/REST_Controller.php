@@ -1462,9 +1462,9 @@ abstract class REST_Controller extends CI_Controller
      */
     protected function _force_login($nonce = '')
     {
-        if (strtolower( $this->config->item('rest_auth') ) == 'basic') {
+        if (strtolower( $this->config->item('rest_auth') ) === 'basic') {
             header('WWW-Authenticate: Basic realm="'.$this->config->item('rest_realm').'"');
-        } elseif (strtolower( $this->config->item('rest_auth') ) == 'digest') {
+        } elseif (strtolower( $this->config->item('rest_auth') ) === 'digest') {
             header('WWW-Authenticate: Digest realm="'.$this->config->item('rest_realm').'", qop="auth", nonce="'.$nonce.'", opaque="'.md5($this->config->item('rest_realm')).'"');
         }
 
